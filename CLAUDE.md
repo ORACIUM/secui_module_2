@@ -15,7 +15,52 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 이것은 실시간으로 서버 리소스를 수집하고 모니터링하는 시스템 리소스 메트릭 모니터링 시스템입니다. 이 시스템은 CPU, 메모리, 디스크, 네트워크 메트릭을 추적하여 시스템 상태를 파악하고 잠재적 문제를 사전에 감지합니다.
 
 ## skills
-- **Git commit**: 사용자가 git commit을 요청할 때 ./claude/skills/git commit/SKILL.md를 참조하여 git commit을 수행합니다.
+
+개발 워크플로우를 위한 커스텀 스킬들입니다.
+
+### 1. git commit
+사용자가 git commit을 요청할 때 변경사항을 체계적으로 커밋하고 문서를 업데이트합니다.
+- 문서 자동 업데이트 (progress.md, plan.md)
+- 의미있는 커밋 메시지 작성
+- Conventional Commits 형식 준수
+
+### 2. code review
+Python 코드를 체계적으로 리뷰하고 개선 제안을 제공합니다.
+- 코드 품질, 성능, 보안 분석
+- PEP 8 준수 여부 확인
+- 타입 힌팅 및 문서화 검토
+- 구체적인 개선 코드 예시 제공
+
+### 3. test runner
+테스트를 실행하고 결과를 분석하여 개선 제안을 제공합니다.
+- pytest 자동 실행
+- 실패 테스트 상세 분석
+- 커버리지 리포트 생성
+- 해결 방안 제시
+
+### 4. code quality
+코드 품질 도구를 실행하여 린팅, 포매팅, 타입 체크를 수행합니다.
+- Black (자동 포매팅)
+- Flake8 (린팅)
+- mypy (타입 체크)
+- isort (import 정렬)
+- 통합 리포트 생성
+
+### 5. refactor
+코드 리팩토링을 체계적으로 계획하고 실행합니다.
+- 코드 스멜 탐지
+- 리팩토링 패턴 제안
+- 단계별 안전한 리팩토링
+- 테스트 기반 검증
+
+### 6. pr create
+Pull Request를 체계적으로 생성합니다.
+- 변경사항 자동 분석
+- 의미있는 PR 제목/설명 작성
+- 테스트 체크리스트 포함
+- GitHub CLI 연동
+
+**사용법**: `/skill-name` 또는 자연어로 요청 (예: "코드 리뷰해줘", "테스트 실행해줘")
 
 ## 기술 스택
 
