@@ -1,39 +1,39 @@
 # 시스템 리소스 메트릭 모니터링 - 개발 계획
 
-## Phase 1: 기본 메트릭 수집 (2주)
+## Phase 1: 기본 메트릭 수집 (2주) - ✅ 95% 완료
 
 ### 환경 설정
-- [ ] 프로젝트 디렉토리 구조 생성
-- [ ] Python 가상환경 설정
-- [ ] 의존성 패키지 설치 (psutil, pyyaml 등)
-- [ ] Git 저장소 초기화 및 .gitignore 설정
+- [x] 프로젝트 디렉토리 구조 생성
+- [x] Python 가상환경 설정
+- [x] 의존성 패키지 설치 (psutil, pyyaml 등)
+- [x] Git 저장소 초기화 및 .gitignore 설정
 
 ### 메트릭 수집 에이전트 개발
-- [ ] 기본 에이전트 구조 설계 (`src/agent/main.py`)
-- [ ] CPU 메트릭 수집기 구현 (`src/agent/collectors/cpu.py`)
-  - [ ] 전체 CPU 사용률
-  - [ ] 코어별 CPU 사용률
-  - [ ] 로드 평균 (1분, 5분, 15분)
-- [ ] 메모리 메트릭 수집기 구현 (`src/agent/collectors/memory.py`)
-  - [ ] 물리 메모리 정보
-  - [ ] 스왑 메모리 정보
-  - [ ] 버퍼/캐시 메모리
-- [ ] 디스크 메트릭 수집기 구현 (`src/agent/collectors/disk.py`)
-  - [ ] 파티션별 디스크 사용량
-  - [ ] inode 사용률
-  - [ ] 디스크 I/O 통계
-- [ ] 네트워크 메트릭 수집기 구현 (`src/agent/collectors/network.py`)
-  - [ ] 인터페이스별 트래픽
-  - [ ] 에러 및 드롭 패킷
-  - [ ] 연결 상태
+- [x] 기본 에이전트 구조 설계 (`src/agent/main.py`)
+- [x] CPU 메트릭 수집기 구현 (`src/agent/collectors/cpu.py`)
+  - [x] 전체 CPU 사용률
+  - [x] 코어별 CPU 사용률
+  - [x] 로드 평균 (1분, 5분, 15분)
+- [x] 메모리 메트릭 수집기 구현 (`src/agent/collectors/memory.py`)
+  - [x] 물리 메모리 정보
+  - [x] 스왑 메모리 정보
+  - [x] 버퍼/캐시 메모리
+- [x] 디스크 메트릭 수집기 구현 (`src/agent/collectors/disk.py`)
+  - [x] 파티션별 디스크 사용량
+  - [x] inode 사용률
+  - [x] 디스크 I/O 통계
+- [x] 네트워크 메트릭 수집기 구현 (`src/agent/collectors/network.py`)
+  - [x] 인터페이스별 트래픽
+  - [x] 에러 및 드롭 패킷
+  - [x] 연결 상태
 
 ### 설정 및 출력
-- [ ] YAML 설정 파일 로더 구현 (`config/agent.yml`)
-- [ ] CLI 출력 포맷 구현
-- [ ] 로깅 시스템 구현
+- [x] YAML 설정 파일 로더 구현 (`config/agent.yml`)
+- [x] CLI 출력 포맷 구현
+- [x] 로깅 시스템 구현
 
 ### 테스트
-- [ ] 단위 테스트 작성 (각 수집기별)
+- [x] 단위 테스트 작성 (각 수집기별)
 - [ ] 크로스 플랫폼 테스트 (Linux, Windows, macOS)
 
 ---
