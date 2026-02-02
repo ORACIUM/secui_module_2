@@ -1,10 +1,21 @@
 # CLAUDE.md
 
-이 파일은 Claude Code (claude.ai/code)가 이 저장소의 코드를 작업할 때 참고할 가이드를 제공합니다.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## 프로젝트 현황
+
+**개발 단계**: Phase 0 (계획 및 설계)
+**구현 상태**: 디렉토리 구조만 생성됨. 실제 코드 구현 전 단계입니다.
+**다음 작업**: Phase 1 - 기본 메트릭 수집 에이전트 개발 시작
+
+자세한 진행 상황은 `docs/progress.md` 참조.
 
 ## 프로젝트 개요
 
 이것은 실시간으로 서버 리소스를 수집하고 모니터링하는 시스템 리소스 메트릭 모니터링 시스템입니다. 이 시스템은 CPU, 메모리, 디스크, 네트워크 메트릭을 추적하여 시스템 상태를 파악하고 잠재적 문제를 사전에 감지합니다.
+
+## skills
+- **Git commit**: 사용자가 git commit을 요청할 때 ./claude/skills/git commit/SKILL.md를 참조하여 git commit을 수행합니다.
 
 ## 기술 스택
 
@@ -46,7 +57,31 @@
 - **API 문서**: FastAPI 자동 생성 (Swagger UI, ReDoc)
 - **프로토콜 버퍼 컴파일**: protoc, protobuf-compiler
 
-## 프로젝트 구조
+## 현재 디렉토리 구조
+
+```
+module_3/
+├── config/                     # 설정 파일 (비어있음)
+├── docs/                       # 문서
+│   ├── plan.md                 # 5단계 개발 계획
+│   ├── progress.md             # 진행 상황 추적
+│   └── system-resource-metrics-prd.md  # 제품 요구사항 문서
+├── scripts/                    # 유틸리티 스크립트 (비어있음)
+├── src/                        # 소스 코드 (디렉토리만 존재)
+│   ├── agent/                  # 메트릭 수집 에이전트 (구현 예정)
+│   ├── alerts/                 # 알림 엔진 (구현 예정)
+│   ├── api/                    # REST & WebSocket API (구현 예정)
+│   ├── common/                 # 공통 코드 (구현 예정)
+│   ├── dashboard/              # 웹 대시보드 (구현 예정)
+│   └── server/                 # 메트릭 수집 서버 (구현 예정)
+├── tests/                      # 테스트 (비어있음)
+├── CLAUDE.md                   # 이 파일
+└── PROJECT_STRUCTURE.md        # 계획된 프로젝트 구조
+```
+
+## 계획된 프로젝트 구조
+
+아래는 구현 완료 후 예상되는 전체 구조입니다:
 
 ```
 module_3/
@@ -168,17 +203,19 @@ module_3/
 
 ## 개발 명령어
 
+**참고**: 아래 명령어는 각 컴포넌트가 구현된 후 사용 가능합니다. 현재는 디렉토리 구조만 존재합니다.
+
 ### 설정
 ```bash
-# Backend 의존성 설치
+# Backend 의존성 설치 (구현 후)
 cd backend
 pip install -r requirements.txt
 
-# Frontend 의존성 설치
+# Frontend 의존성 설치 (구현 후)
 cd frontend
 npm install
 
-# Protocol Buffers 컴파일
+# Protocol Buffers 컴파일 (proto 파일 작성 후)
 protoc --python_out=./backend/src/protos --js_out=import_style=commonjs:./frontend/protos proto/*.proto
 ```
 
@@ -408,3 +445,32 @@ export default defineNuxtConfig({
 - **SQLite**: 제로 설정, 임베디드 데이터베이스, 단일 파일 관리, 충분한 성능 (1,000 서버 규모)
 - **Protocol Buffers**: 효율적인 바이너리 직렬화, 강력한 타입 시스템, 언어 중립적, JSON 대비 빠른 성능과 작은 페이로드 크기
 - **psutil**: 크로스 플랫폼 시스템 모니터링, Python 네이티브, 안정적이고 검증된 라이브러리
+
+## 개발 시작하기
+
+프로젝트는 현재 계획 단계에 있으며, 다음 순서로 개발을 시작합니다:
+
+### Phase 1부터 시작
+1. `docs/plan.md`의 Phase 1 작업 목록 확인
+2. `docs/progress.md`에서 진행 상황 추적
+3. 각 작업 완료 시 progress.md 업데이트
+
+### 첫 번째 작업
+Phase 1의 첫 작업은 메트릭 수집 에이전트 개발입니다:
+1. Python 환경 설정 (Python 3.11+)
+2. `src/agent/main.py` 작성
+3. `src/agent/collectors/` 디렉토리에 각 메트릭 수집기 구현
+4. `config/agent.yml` 설정 파일 작성
+5. 테스트 작성
+
+### 개발 원칙
+- 각 Phase의 모든 작업이 완료된 후 다음 Phase로 진행
+- 코드 작성 시 타입 힌팅 및 docstring 포함
+- 각 모듈은 단위 테스트 필수
+- 커밋 메시지는 명확하게 작성 (예: "feat: CPU 메트릭 수집기 구현")
+
+### 문서 참조
+- **요구사항**: `docs/system-resource-metrics-prd.md`
+- **개발 계획**: `docs/plan.md`
+- **진행 상황**: `docs/progress.md`
+- **구조 설계**: `PROJECT_STRUCTURE.md`
